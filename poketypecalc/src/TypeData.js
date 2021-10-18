@@ -1,269 +1,269 @@
-import fireType from "./Assets/Images/fireType.png";
+// import fireType from "./Assets/fireType.png";
+// import grassType from "./Assets/grassType.png";
+// import waterType from "./Assets/waterType.png";
+// import normalType from "./Assets/normalType.png";
+// import fightingType from "./Assets/fightingType.png";
+// import flyingType from "./Assets/flyingType.png";
+// import bugType from "./Assets/bugType.png";
+// import iceType from "./Assets/iceType.png";
+// import poisonType from "./Assets/poisonType.png";
+// import ghostType from "./Assets/ghostType.png";
+// import dragonType from "./Assets/dragonType.png";
+// import groundType from "./Assets/groundType.png";
+// import steelType from "./Assets/steelType.png";
+// import electricType from "./Assets/electricType.png";
+// import darkType from "./Assets/darkType.png";
+// import rockType from "./Assets/rockType.png";
+// import psychicType from "./Assets/psychicType.png";
+// import fairyType from "./Assets/fairyType.png";
 
 const TypeData = [
   {
-    id: 1,
+    id: 0,
     name: "fire",
-    image: fireType,
-    attack: {
-      strong: ["grass", "steel", "bug", "ice"],
-      weak: ["rock", "water", "fire", "dragon"],
-      noEffect: [],
-    },
-    defense: {
-      weakness: ["water", "rock", "ground"],
-      resist: ["fire", "grass", "ice", "steel"],
-      immune: [],
-    },
+
+    imgSrc: "./Assets/fireType",
+
+    superEff: ["grass", "steel", "bug", "ice"],
+    notEff: ["rock", "water", "fire", "dragon"],
+    noFx: [],
+
+    weak: ["water", "rock", "ground"],
+    resist: ["fire", "grass", "ice", "steel"],
+    immune: [],
+  },
+  {
+    id: 1,
+    name: "normal",
+
+    imgSrc: "./Assets/normal.png",
+
+    superEff: [],
+    notEff: ["rock", "steel"],
+    noFx: ["ghost"],
+
+    weak: ["fighting"],
+    resist: [],
+    immune: ["ghost"],
   },
   {
     id: 2,
-    name: "normal",
-    attack: {
-      strong: [],
-      weak: ["rock", "steel"],
-      noEffect: ["ghost"],
-    },
-    defense: {
-      weakness: ["fighting"],
-      resist: [],
-      immune: ["ghost"],
-    },
+    name: "water",
+    imgSrc: "./Assets/waterType.png",
+
+    superEff: ["fire", "ground", "rock"],
+    notEff: ["water", "grass", "dragon"],
+    noFx: [],
+
+    weak: ["electric", "grass"],
+    resist: ["fire", "water", "ice"],
+    immune: [],
   },
   {
     id: 3,
-    name: "water",
-    attack: {
-      strong: ["fire", "ground", "rock"],
-      weak: ["water", "grass", "dragon"],
-      noEffect: [],
-    },
-    defense: {
-      weakness: ["electric", "grass"],
-      resist: ["fire", "water", "ice"],
-      immune: [],
-    },
+    name: "electric",
+    imgSrc: "./Assets/electricType.png",
+
+    superEff: ["water", "flying"],
+    notEff: ["electric", "grass", "dragon"],
+    noFx: ["ground"],
+
+    weak: ["ground"],
+    resist: ["flying", "steel", "electric"],
+    immune: [],
   },
   {
     id: 4,
-    name: "electric",
-    attack: {
-      strong: ["water", "flying"],
-      weak: ["electric", "grass", "dragon"],
-      noEffect: ["ground"],
-    },
-    defense: {
-      weakness: ["ground"],
-      resist: ["flying", "steel", "electric"],
-      immune: [],
-    },
+    name: "grass",
+    imgSrc: "./Assets/grassType.png",
+
+    superEff: ["rock", "ground", "water"],
+    notEff: ["fire", "ice", "poison", "bug", "flying", "dragon", "steel"],
+    noFx: [],
+
+    weak: ["fire", "bug", "poison", "flying", "ice"],
+    resist: ["grass", "water", "electric", "ground"],
+    immune: [],
   },
   {
     id: 5,
-    name: "grass",
-    attack: {
-      strong: ["rock", "ground", "water"],
-      weak: ["fire", "ice", "poison", "bug", "flying", "dragon", "steel"],
-      noEffect: [],
-    },
-    defense: {
-      weakness: ["fire", "bug", "poison", "flying", "ice"],
-      resist: ["grass", "water", "electric", "ground"],
-      immune: [],
-    },
+    name: "ice",
+    imgSrc: "./Assets/iceType.png",
+
+    superEff: ["grass", "ground", "flying", "dragon"],
+    notEff: ["fire", "water", "ice", "steel"],
+    noFx: [],
+
+    weak: ["fighting", "rock", "steel", "fire"],
+    resist: ["ice"],
+    immune: [],
   },
   {
     id: 6,
-    name: "ice",
-    attack: {
-      strong: ["grass", "ground", "flying", "dragon"],
-      weak: ["fire", "water", "ice", "steel"],
-      noEffect: [],
-    },
-    defense: {
-      weakness: ["fighting", "rock", "steel", "fire"],
-      resist: ["ice"],
-      immune: [],
-    },
+    name: "fighting",
+    imgSrc: "./Assets/fightingType.png",
+
+    superEff: ["ice", "steel", "dark", "normal", "rock"],
+    notEff: ["flying", "poison", "psychic", "bug", "fairy"],
+    noFx: ["ghost"],
+
+    weak: ["fairy", "flying", "psychic"],
+    resist: ["rock", "bug", "dark"],
+    immune: [],
   },
   {
     id: 7,
-    name: "fighting",
-    attack: {
-      strong: ["ice", "steel", "dark", "normal", "rock"],
-      weak: ["flying", "poison", "psychic", "bug", "fairy"],
-      noEffect: ["ghost"],
-    },
-    defense: {
-      weakness: ["fairy", "flying", "psychic"],
-      resist: ["rock", "bug", "dark"],
-      immune: [],
-    },
+    name: "flying",
+    imgSrc: "./Assets/flyingType.png",
+
+    superEff: ["fighting", "bug", "grass"],
+    notEff: ["rock", "steel", "electric"],
+    noFx: [],
+
+    weak: ["rock", "electric", "ice"],
+    resist: ["fighting", "bug", "fairy"],
+    immune: ["ground"],
   },
   {
     id: 8,
-    name: "flying",
-    attack: {
-      strong: ["fighting", "bug", "grass"],
-      weak: ["rock", "steel", "electric"],
-      noEffect: [],
-    },
-    defense: {
-      weakness: ["rock", "electric", "ice"],
-      resist: ["fighting", "bug", "fairy"],
-      immune: ["ground"],
-    },
+    name: "poison",
+    imgSrc: "./Assets/poisonType.png",
+
+    superEff: ["fairy", "grass"],
+    notEff: ["poison", "ground", "rock", "ghost"],
+    noFx: ["steel"],
+
+    weak: ["ground", "psychic"],
+    resist: ["fighting", "poison", "grass", "fairy"],
+    immune: [],
   },
   {
     id: 9,
-    name: "poison",
-    attack: {
-      strong: ["fairy", "grass"],
-      weak: ["poison", "ground", "rock", "ghost"],
-      noEffect: ["steel"],
-    },
-    defense: {
-      weakness: ["ground", "psychic"],
-      resist: ["fighting", "poison", "grass", "fairy"],
-      immune: [],
-    },
+    name: "ground",
+    imgSrc: "./Assets/groundType.png",
+
+    superEff: ["poison", "rock", "steel", "fire", "electric"],
+    notEff: ["bug", "grass"],
+    noFx: ["flying"],
+
+    weak: ["water", "grass", "ice"],
+    resist: ["poison", "rock", "steel", "fire"],
+    immune: ["electric"],
   },
   {
     id: 10,
-    name: "ground",
-    attack: {
-      strong: ["poison", "rock", "steel", "fire", "electric"],
-      weak: ["bug", "grass"],
-      noEffect: ["flying"],
-    },
-    defense: {
-      weakness: ["water", "grass", "ice"],
-      resist: ["poison", "rock", "steel", "fire"],
-      immune: ["electric"],
-    },
+    name: "rock",
+    imgSrc: "./Assets/rockType.png",
+
+    superEff: ["ice", "flying", "bug", "fire"],
+    notEff: ["fighting", "ground", "steel"],
+    noFx: [],
+
+    weak: ["grass", "water", "fighting", "ground", "steel"],
+    resist: ["normal", "flying", "poison", "fire"],
+    immune: [],
   },
   {
     id: 11,
-    name: "rock",
-    attack: {
-      strong: ["ice", "flying", "bug", "fire"],
-      weak: ["fighting", "ground", "steel"],
-      noEffect: [],
-    },
-    defense: {
-      weakness: ["grass", "water", "fighting", "ground", "steel"],
-      resist: ["normal", "flying", "poison", "fire"],
-      immune: [],
-    },
+    name: "bug",
+    imgSrc: "./Assets/bugType.png",
+
+    superEff: ["psychic", "dark"],
+    notEff: ["fighting", "ghost", "poison", "fling", "steel"],
+    noFx: [],
+
+    weak: ["fire", "flying", "rock"],
+    resist: ["fighting", "ground", "grass"],
+    immune: [],
   },
   {
     id: 12,
-    name: "bug",
-    attack: {
-      strong: ["psychic", "dark"],
-      weak: ["fighting", "ghost", "poison", "fling", "steel"],
-      noEffect: [],
-    },
-    defense: {
-      weakness: ["fire", "flying", "rock"],
-      resist: ["fighting", "ground", "grass"],
-      immune: [],
-    },
+    name: "ghost",
+    imgSrc: "./Assets/ghostType.png",
+
+    superEff: ["psychic", "ghost"],
+    notEff: ["dark"],
+    noFx: ["normal"],
+
+    weak: ["ghost", "dark"],
+    resist: ["poison", "bug"],
+    immune: ["normal", "fighting"],
   },
   {
     id: 13,
-    name: "ghost",
-    attack: {
-      strong: ["psychic", "ghost"],
-      weak: ["dark"],
-      noEffect: ["normal"],
-    },
-    defense: {
-      weakness: ["ghost", "dark"],
-      resist: ["poison", "bug"],
-      immune: ["normal", "fighting"],
-    },
+    name: "psychic",
+    imgSrc: "./Assets/psychicType.png",
+
+    superEff: ["fighting", "poison"],
+    notEff: ["psychic", "steel"],
+    noFx: ["dark"],
+
+    weak: ["ghost", "dark", "bug"],
+    resist: ["fighting", "psychic"],
+    immune: [],
   },
   {
     id: 14,
-    name: "psychic",
-    attack: {
-      strong: ["fighting", "poison"],
-      weak: ["psychic", "steel"],
-      noEffect: ["dark"],
-    },
-    defense: {
-      weakness: ["fire", "flying", "rock"],
-      resist: ["fighting", "ground", "grass"],
-      immune: [],
-    },
+    name: "dark",
+    imgSrc: "./Assets/darkType.png",
+
+    superEff: ["psychic", "ghost"],
+    notEff: ["fighting", "dark", "fairy"],
+    noFx: [],
+
+    weak: ["fighting", "bug", "fairy"],
+    resist: ["ghost", "dark"],
+    immune: ["psychic"],
   },
   {
     id: 15,
-    name: "dark",
-    attack: {
-      strong: ["psychic", "ghost"],
-      weak: ["fighting", "dark", "fairy"],
-      noEffect: [],
-    },
-    defense: {
-      weakness: ["fighting", "bug", "fairy"],
-      resist: ["ghost", "psychic", "dark"],
-      immune: [],
-    },
+    name: "fairy",
+    imgSrc: "./Assets/fairyType.png",
+
+    superEff: ["fighting", "dragon", "dark"],
+    notEff: ["poison", "steel", "fire"],
+    noFx: [],
+
+    weak: ["poison", "steel"],
+    resist: ["fighting", "bug", "dark"],
+    immune: ["dragon"],
   },
   {
     id: 16,
-    name: "fairy",
-    attack: {
-      strong: ["fighting", "dragon", "dark"],
-      weak: ["poison", "steel", "fire"],
-      noEffect: [],
-    },
-    defense: {
-      weakness: ["poison", "steel"],
-      resist: ["fighting", "bug", "dark"],
-      immune: ["dragon"],
-    },
+    name: "steel",
+    imgSrc: "./Assets/steelType.png",
+
+    superEff: ["rock", "ice", "fairy"],
+    notEff: ["steel", "electric", "water", "fire"],
+    noFx: [],
+
+    weak: ["fighting", "ground", "fire"],
+    resist: [
+      "normal",
+      "flying",
+      "rock",
+      "bug",
+      "steel",
+      "grass",
+      "psychic",
+      "ice",
+      "dragon",
+      "fairy",
+    ],
+    immune: ["poison"],
   },
   {
     id: 17,
-    name: "steel",
-    attack: {
-      strong: ["rock", "ice", "fairy"],
-      weak: ["steel", "electric", "water", "fire"],
-      noEffect: [],
-    },
-    defense: {
-      weakness: ["fighting", "ground", "fire"],
-      resist: [
-        "normal",
-        "flying",
-        "rock",
-        "bug",
-        "steel",
-        "grass",
-        "psychic",
-        "ice",
-        "dragon",
-        "fairy",
-      ],
-      immune: ["poison"],
-    },
-  },
-  {
-    id: 18,
     name: "dragon",
-    attack: {
-      strong: ["dragon"],
-      weak: ["steel"],
-      noEffect: ["fairy"],
-    },
-    defense: {
-      weakness: ["dragon", "ice", "fairy"],
-      resist: ["fire", "water", "grass", "electric"],
-      immune: [],
-    },
+    imgSrc: "./Assets/dragonType.png",
+
+    superEff: ["dragon"],
+    notEff: ["steel"],
+    noFx: ["fairy"],
+
+    weak: ["dragon", "ice", "fairy"],
+    resist: ["fire", "water", "grass", "electric"],
+    immune: [],
   },
 ];
 

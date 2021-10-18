@@ -1,0 +1,7 @@
+#mainDiv {
+  color: rgb(37, 106, 255);
+}
+
+#typeButtons {
+  display: inline-flex;
+}

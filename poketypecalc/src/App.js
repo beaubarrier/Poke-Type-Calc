@@ -1,10 +1,10 @@
 import "./App.css";
-import TypeCalcMain from "./logic.js";
+import Main from "./main";
 
 function App() {
   return (
     <div id="parentDiv">
-      <TypeCalcMain />
+      <Main />
     </div>
   );
 }

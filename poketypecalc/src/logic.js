@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TypeData from "./TypeData.js";
 import fireType from "./Assets/Images/fireType.png";
 import grassType from "./Assets/Images/grassType.png";
@@ -29,11 +29,31 @@ const TypeCalc = () => {
   const [resistDef, setResistDef] = useState([]);
   const [immuneDef, setImmuneDef] = useState([]);
 
+  // const grassImage = <img id="grass" alt="grassType" src={grassType} />;
+  // const fireImage = <img id="fire" alt="fireType" src={fireType} />;
+  // const waterImage = <img id="water" alt="waterType" src={waterType} />;
+  // const bugImage = <img id="bug" alt="bugType" src={bugType} />;
+  // const normalImage = <img id="normal" alt="normalType" src={normalType} />;
+  // const psychicImage = <img id="bug" alt="psychicType" src={psychicType} />;
+  // const fightingImage = (
+  //   <img id="fighting" alt="fightingType" src={fightingType} />
+  // );
+  // const ghostImage = <img id="ghost" alt="ghostType" src={ghostType} />;
+  // const poisonImage = <img id="poison" alt="poisonType" src={poisonType} />;
+  // const dragonImage = <img id="dragon" alt="dragonType" src={dragonType} />;
+  // const groundImage = <img id="ground" alt="groundType" src={groundType} />;
+  // const steelImage = <img id="steel" alt="steelType" src={steelType} />;
+  // const electricImage = <img alt="electricType" src={electricType} />;
+  // const darkImage = <img alt="darkType" src={darkType} />;
+  // const rockImage = <img alt="rockType" src={rockType} />;
+  // const fairyImage = <img alt="fairyType" src={fairyType} />;
+  // const iceImage = <img alt="iceType" src={iceType} />;
+  // const flyingImage = <img alt="flyingType" src={flyingType} />;
   // NAMES
   const typeNameArr = [];
   function renderTargetType1(props) {
     if (props.name === "grass") {
-      typeNameArr.push(<img id="grass" alt="grassType" src={grassType} />);
+      typeNameArr.push(<img id="grass" alt="grass" src={grassType} />);
     }
     if (props.name === "fire") {
       typeNameArr.push(<img id="fire" alt="fireType" src={fireType} />);
@@ -45,46 +65,52 @@ const TypeCalc = () => {
       typeNameArr.push(<img id="bug" alt="bugType" src={bugType} />);
     }
     if (props.name === "normal") {
-      typeNameArr.push(<img alt="normalType" src={normalType} />);
+      typeNameArr.push(<img id="normal" alt="normalType" src={normalType} />);
     }
     if (props.name === "psychic") {
-      typeNameArr.push(<img alt="psychicType" src={psychicType} />);
+      typeNameArr.push(
+        <img id="psychic" alt="psychicType" src={psychicType} />
+      );
     }
     if (props.name === "fighting") {
-      typeNameArr.push(<img alt="fightingType" src={fightingType} />);
+      typeNameArr.push(
+        <img id="fighting" alt="fightingType" src={fightingType} />
+      );
     }
     if (props.name === "ghost") {
-      typeNameArr.push(<img alt="ghostType" src={ghostType} />);
+      typeNameArr.push(<img id="ghost" alt="ghostType" src={ghostType} />);
     }
     if (props.name === "poison") {
-      typeNameArr.push(<img alt="poisonType" src={poisonType} />);
+      typeNameArr.push(<img id="poison" alt="poisonType" src={poisonType} />);
     }
     if (props.name === "dragon") {
-      typeNameArr.push(<img alt="dragonType" src={dragonType} />);
+      typeNameArr.push(<img id="dragon" alt="dragonType" src={dragonType} />);
     }
     if (props.name === "ground") {
-      typeNameArr.push(<img alt="groundType" src={groundType} />);
+      typeNameArr.push(<img id="ground" alt="groundType" src={groundType} />);
     }
     if (props.name === "steel") {
-      typeNameArr.push(<img alt="steelType" src={steelType} />);
+      typeNameArr.push(<img id="steel" alt="steelType" src={steelType} />);
     }
     if (props.name === "electric") {
-      typeNameArr.push(<img alt="electricType" src={electricType} />);
+      typeNameArr.push(
+        <img id="electric" alt="electricType" src={electricType} />
+      );
     }
     if (props.name === "dark") {
-      typeNameArr.push(<img alt="darkType" src={darkType} />);
+      typeNameArr.push(<img id="dark" alt="darkType" src={darkType} />);
     }
     if (props.name === "rock") {
-      typeNameArr.push(<img alt="rockType" src={rockType} />);
+      typeNameArr.push(<img id="rock" alt="rockType" src={rockType} />);
     }
     if (props.name === "fairy") {
-      typeNameArr.push(<img alt="fairyType" src={fairyType} />);
+      typeNameArr.push(<img id="fairy" alt="fairyType" src={fairyType} />);
     }
     if (props.name === "ice") {
-      typeNameArr.push(<img alt="iceType" src={iceType} />);
+      typeNameArr.push(<img id="ice" alt="iceType" src={iceType} />);
     }
     if (props.name === "flying") {
-      typeNameArr.push(<img alt="flyingType" src={flyingType} />);
+      typeNameArr.push(<img id="flying" alt="flyingType" src={flyingType} />);
     }
     setTargetType1(typeNameArr);
   }
@@ -146,50 +172,49 @@ const TypeCalc = () => {
     setTargetType2(typeNameArr);
   }
 
-  // ATTACKS
-  // TO DO:
-  // Make function with passed in values to reduce repeat code.Only works for defense.
-  // Something like this...
-  //  if (props.defense.weakness.includes(nameVariable)) {
-  //   resisArr.push(<img alt=`${typeNameVariable} Type` src={typeNameVariable} />);
-  //  }
+  let strongAtkType = [];
+
   const strongArr = [];
+
   function renderStrong(props) {
     if (props.attack.strong.includes("grass")) {
-      strongArr.push(<img alt="grassType" src={grassType} />);
+      strongArr.push(<img id="grass" alt="grassType" src={grassType} />);
     }
     if (props.attack.strong.includes("fire")) {
-      strongArr.push(<img alt="fireType" src={fireType} />);
+      strongArr.push(props.name.image);
+      console.log(props);
     }
     if (props.attack.strong.includes("water")) {
-      strongArr.push(<img alt="waterType" src={waterType} />);
+      strongArr.push(<img id="water" alt="waterType" src={waterType} />);
     }
     if (props.attack.strong.includes("bug")) {
-      strongArr.push(<img alt="bugType" src={bugType} />);
+      strongArr.push(<img id="bug" alt="bugType" src={bugType} />);
     }
     if (props.attack.strong.includes("normal")) {
-      strongArr.push(<img alt="normalType" src={normalType} />);
+      strongArr.push(<img id="normal" alt="normalType" src={normalType} />);
     }
     if (props.attack.strong.includes("psychic")) {
-      strongArr.push(<img alt="psychicType" src={psychicType} />);
+      strongArr.push(<img id="bug" alt="psychicType" src={psychicType} />);
     }
     if (props.attack.strong.includes("fighting")) {
-      strongArr.push(<img alt="fightingType" src={fightingType} />);
+      strongArr.push(
+        <img id="fighting" alt="fightingType" src={fightingType} />
+      );
     }
     if (props.attack.strong.includes("ghost")) {
-      strongArr.push(<img alt="ghostType" src={ghostType} />);
+      strongArr.push(<img id="ghost" alt="ghostType" src={ghostType} />);
     }
     if (props.attack.strong.includes("poison")) {
-      strongArr.push(<img alt="poisonType" src={poisonType} />);
+      strongArr.push(<img id="poison" alt="poisonType" src={poisonType} />);
     }
     if (props.attack.strong.includes("dragon")) {
-      strongArr.push(<img alt="dragonType" src={dragonType} />);
+      strongArr.push(<img id="dragon" alt="dragonType" src={dragonType} />);
     }
     if (props.attack.strong.includes("ground")) {
-      strongArr.push(<img alt="groundType" src={groundType} />);
+      strongArr.push(<img id="ground" alt="groundType" src={groundType} />);
     }
     if (props.attack.strong.includes("steel")) {
-      strongArr.push(<img alt="steelType" src={steelType} />);
+      strongArr.push(<img id="steel" alt="steelType" src={steelType} />);
     }
     if (props.attack.strong.includes("electric")) {
       strongArr.push(<img alt="electricType" src={electricType} />);
@@ -329,118 +354,131 @@ const TypeCalc = () => {
   }
   // DEFENSE
   const weaknessArr = [];
-  function renderWeakness(props) {
+  function renderWeakness(props, id, image, name, attack, defense) {
     if (props.defense.weakness.includes("grass")) {
-      weaknessArr.push(<img alt="grassType" src={grassType} />);
+      console.log(TypeData[4]);
+      weaknessArr.push(
+        <img id="grass" alt="grassType" src={TypeData[4].image} />
+      );
     }
     if (props.defense.weakness.includes("fire")) {
-      weaknessArr.push(<img alt="fireType" src={fireType} />);
+      weaknessArr.push(<img id="fire" alt="fireType" src={fireType} />);
     }
     if (props.defense.weakness.includes("water")) {
-      weaknessArr.push(<img alt="waterType" src={waterType} />);
+      weaknessArr.push(<img id="water" alt="waterType" src={waterType} />);
     }
     if (props.defense.weakness.includes("bug")) {
-      weaknessArr.push(<img alt="bugType" src={bugType} />);
+      weaknessArr.push(<img id="bug" alt="bugType" src={bugType} />);
     }
     if (props.defense.weakness.includes("normal")) {
-      weaknessArr.push(<img alt="normalType" src={normalType} />);
+      weaknessArr.push(<img id="normal" alt="normalType" src={normalType} />);
     }
     if (props.defense.weakness.includes("psychic")) {
-      weaknessArr.push(<img alt="psychicType" src={psychicType} />);
+      weaknessArr.push(
+        <img id="psychic" alt="psychicType" src={psychicType} />
+      );
     }
     if (props.defense.weakness.includes("fighting")) {
-      weaknessArr.push(<img alt="fightingType" src={fightingType} />);
+      weaknessArr.push(
+        <img id="fighting" alt="fightingType" src={fightingType} />
+      );
     }
     if (props.defense.weakness.includes("ghost")) {
-      weaknessArr.push(<img alt="ghostType" src={ghostType} />);
+      weaknessArr.push(<img id="ghost" alt="ghostType" src={ghostType} />);
     }
     if (props.defense.weakness.includes("poison")) {
-      weaknessArr.push(<img alt="poisonType" src={poisonType} />);
+      weaknessArr.push(<img id="poison" alt="poisonType" src={poisonType} />);
     }
     if (props.defense.weakness.includes("dragon")) {
-      weaknessArr.push(<img alt="dragonType" src={dragonType} />);
+      weaknessArr.push(<img id="dragon" alt="dragonType" src={dragonType} />);
     }
     if (props.defense.weakness.includes("ground")) {
-      weaknessArr.push(<img alt="groundType" src={groundType} />);
+      weaknessArr.push(<img id="ground" alt="groundType" src={groundType} />);
     }
     if (props.defense.weakness.includes("steel")) {
-      weaknessArr.push(<img alt="steelType" src={steelType} />);
+      weaknessArr.push(<img id="steel" alt="steelType" src={steelType} />);
     }
     if (props.defense.weakness.includes("electric")) {
-      weaknessArr.push(<img alt="electricType" src={electricType} />);
+      weaknessArr.push(
+        <img id="electric" alt="electricType" src={electricType} />
+      );
     }
     if (props.defense.weakness.includes("dark")) {
-      weaknessArr.push(<img alt="darkType" src={darkType} />);
+      weaknessArr.push(<img id="dark" alt="darkType" src={darkType} />);
     }
     if (props.defense.weakness.includes("rock")) {
-      weaknessArr.push(<img alt="rockType" src={rockType} />);
+      weaknessArr.push(<img id="rock" alt="rockType" src={rockType} />);
     }
     if (props.defense.weakness.includes("fairy")) {
-      weaknessArr.push(<img alt="fairyType" src={fairyType} />);
+      weaknessArr.push(<img id="fairy" alt="fairyType" src={fairyType} />);
     }
     if (props.defense.weakness.includes("ice")) {
-      weaknessArr.push(<img alt="iceType" src={iceType} />);
+      weaknessArr.push(<img id="ice" alt="iceType" src={iceType} />);
     }
     if (props.defense.weakness.includes("flying")) {
-      weaknessArr.push(<img alt="flyingType" src={flyingType} />);
+      weaknessArr.push(<img id="flying" alt="flyingType" src={flyingType} />);
     }
     setWeaknessDef(weaknessArr);
   }
   const resistArr = [];
   function renderResist(props) {
     if (props.defense.resist.includes("grass")) {
-      resistArr.push(<img alt="grassType" src={grassType} />);
+      resistArr.push(<img id="grass" alt="grassType" src={grassType} />);
     }
     if (props.defense.resist.includes("fire")) {
-      resistArr.push(<img alt="fireType" src={fireType} />);
+      resistArr.push(<img id="fire" alt="fireType" src={fireType} />);
     }
     if (props.defense.resist.includes("water")) {
-      resistArr.push(<img alt="waterType" src={waterType} />);
+      resistArr.push(<img id="water" alt="waterType" src={waterType} />);
     }
     if (props.defense.resist.includes("bug")) {
-      resistArr.push(<img alt="bugType" src={bugType} />);
+      resistArr.push(<img id="bug" alt="bugType" src={bugType} />);
     }
     if (props.defense.resist.includes("normal")) {
-      resistArr.push(<img alt="normalType" src={normalType} />);
+      resistArr.push(<img id="normal" alt="normalType" src={normalType} />);
     }
     if (props.defense.resist.includes("psychic")) {
-      resistArr.push(<img alt="psychicType" src={psychicType} />);
+      resistArr.push(<img id="psychic" alt="psychicType" src={psychicType} />);
     }
     if (props.defense.resist.includes("fighting")) {
-      resistArr.push(<img alt="fightingType" src={fightingType} />);
+      resistArr.push(
+        <img id="fighting" alt="fightingType" src={fightingType} />
+      );
     }
     if (props.defense.resist.includes("ghost")) {
-      resistArr.push(<img alt="ghostType" src={ghostType} />);
+      resistArr.push(<img id="ghost" alt="ghostType" src={ghostType} />);
     }
     if (props.defense.resist.includes("poison")) {
-      resistArr.push(<img alt="poisonType" src={poisonType} />);
+      resistArr.push(<img id="poison" alt="poisonType" src={poisonType} />);
     }
     if (props.defense.resist.includes("dragon")) {
       resistArr.push(<img alt="dragonType" src={dragonType} />);
     }
     if (props.defense.resist.includes("ground")) {
-      resistArr.push(<img alt="groundType" src={groundType} />);
+      resistArr.push(<img id="ground" alt="groundType" src={groundType} />);
     }
     if (props.defense.resist.includes("steel")) {
-      resistArr.push(<img alt="steelType" src={steelType} />);
+      resistArr.push(<img id="steel" alt="steelType" src={steelType} />);
     }
     if (props.defense.resist.includes("electric")) {
-      resistArr.push(<img alt="electricType" src={electricType} />);
+      resistArr.push(
+        <img id="electric" alt="electricType" src={electricType} />
+      );
     }
     if (props.defense.resist.includes("dark")) {
-      resistArr.push(<img alt="darkType" src={darkType} />);
+      resistArr.push(<img id="dark" alt="darkType" src={darkType} />);
     }
     if (props.defense.resist.includes("rock")) {
-      resistArr.push(<img alt="rockType" src={rockType} />);
+      resistArr.push(<img id="rock" alt="rockType" src={rockType} />);
     }
     if (props.defense.resist.includes("fairy")) {
-      resistArr.push(<img alt="fairyType" src={fairyType} />);
+      resistArr.push(<img id="fairy" alt="fairyType" src={fairyType} />);
     }
     if (props.defense.resist.includes("ice")) {
-      resistArr.push(<img alt="iceType" src={iceType} />);
+      resistArr.push(<img id="ice" alt="iceType" src={iceType} />);
     }
     if (props.defense.resist.includes("flying")) {
-      resistArr.push(<img alt="flyingType" src={flyingType} />);
+      resistArr.push(<img id="flying" alt="flyingType" src={flyingType} />);
     }
     setResistDef(resistArr);
   }
@@ -503,15 +541,39 @@ const TypeCalc = () => {
     setImmuneDef(immuneArr);
   }
 
-  function adjustWeaknessDef(props) {
-    let arr = props.defense.resist;
-    let recArr = [];
-    console.log(weaknessDef);
+  function adjustWeakness(props) {
+    let resists = props.defense.resist;
+    let updatedWeakness = [];
+    // console.log(resists);
+    // console.log(props);
+    // console.log(weaknessDef);
     weaknessDef.forEach((e) => {
-      recArr.push(e.props.alt);
+      console.table(e.props.id);
+      updatedWeakness.push(e.props.id);
+      // console.log("*********");
+      // console.log(e.props);
+      //if put images in object TypeData then can call it here much easier.
     });
-    // weakArr = weakArr.filter((el) => !resistArr.includes(el));
-    console.log(recArr);
+
+    updatedWeakness = updatedWeakness.filter((val) => !resists.includes(val));
+    console.log(weaknessDef);
+    console.log("%%%");
+    // if (updatedWeakness.includes("fire")) {
+    //   updatedWeakness.splice("fire");
+
+    //   // Maybe then remove fire and replae it wiht the img html
+    // }
+    setWeaknessDef([]);
+    setWeaknessDef(updatedWeakness.join(", "));
+    console.log(updatedWeakness);
+    console.log(weaknessDef);
+  }
+
+  function renderStrong1(props) {
+    // console.log("DSF" + props.name);
+    // if (weaknessArr.includes(props)) {
+    //   console.log("ok got it");
+    // }
   }
   return (
     <div id="typeCalcMain">
@@ -547,12 +609,13 @@ const TypeCalc = () => {
       ))}
       <br></br>
       <br></br>
-      {TypeData.map((type) => (
+      {TypeData.forEach((type) => (
         <div>
           <button
             onClick={() => {
               renderTargetType2(type);
-              adjustWeaknessDef(type);
+              adjustWeakness(type);
+              renderStrong1(type);
               // renderStrong(type);
               // renderWeak(type);
               // renderNoEffect(type);
