@@ -1,28 +1,28 @@
-// import fireType from "./Assets/fireType.png";
-// import grassType from "./Assets/grassType.png";
-// import waterType from "./Assets/waterType.png";
-// import normalType from "./Assets/normalType.png";
-// import fightingType from "./Assets/fightingType.png";
-// import flyingType from "./Assets/flyingType.png";
-// import bugType from "./Assets/bugType.png";
-// import iceType from "./Assets/iceType.png";
-// import poisonType from "./Assets/poisonType.png";
-// import ghostType from "./Assets/ghostType.png";
-// import dragonType from "./Assets/dragonType.png";
-// import groundType from "./Assets/groundType.png";
-// import steelType from "./Assets/steelType.png";
-// import electricType from "./Assets/electricType.png";
-// import darkType from "./Assets/darkType.png";
-// import rockType from "./Assets/rockType.png";
-// import psychicType from "./Assets/psychicType.png";
-// import fairyType from "./Assets/fairyType.png";
+import fireType from "./Assets/fireType.png";
+import grassType from "./Assets/grassType.png";
+import waterType from "./Assets/waterType.png";
+import normalType from "./Assets/normalType.png";
+import fightingType from "./Assets/fightingType.png";
+import flyingType from "./Assets/flyingType.png";
+import bugType from "./Assets/bugType.png";
+import iceType from "./Assets/iceType.png";
+import poisonType from "./Assets/poisonType.png";
+import ghostType from "./Assets/ghostType.png";
+import dragonType from "./Assets/dragonType.png";
+import groundType from "./Assets/groundType.png";
+import steelType from "./Assets/steelType.png";
+import electricType from "./Assets/electricType.png";
+import darkType from "./Assets/darkType.png";
+import rockType from "./Assets/rockType.png";
+import psychicType from "./Assets/psychicType.png";
+import fairyType from "./Assets/fairyType.png";
 
 const TypeData = [
   {
     id: 0,
     name: "fire",
 
-    imgSrc: "./Assets/fireType",
+    imgSrc: fireType,
 
     superEff: ["grass", "steel", "bug", "ice"],
     notEff: ["rock", "water", "fire", "dragon"],
@@ -36,7 +36,7 @@ const TypeData = [
     id: 1,
     name: "normal",
 
-    imgSrc: "./Assets/normal.png",
+    imgSrc: normalType,
 
     superEff: [],
     notEff: ["rock", "steel"],
@@ -49,7 +49,7 @@ const TypeData = [
   {
     id: 2,
     name: "water",
-    imgSrc: "./Assets/waterType.png",
+    imgSrc: waterType,
 
     superEff: ["fire", "ground", "rock"],
     notEff: ["water", "grass", "dragon"],
@@ -62,7 +62,7 @@ const TypeData = [
   {
     id: 3,
     name: "electric",
-    imgSrc: "./Assets/electricType.png",
+    imgSrc: electricType,
 
     superEff: ["water", "flying"],
     notEff: ["electric", "grass", "dragon"],
@@ -75,7 +75,7 @@ const TypeData = [
   {
     id: 4,
     name: "grass",
-    imgSrc: "./Assets/grassType.png",
+    imgSrc: grassType,
 
     superEff: ["rock", "ground", "water"],
     notEff: ["fire", "ice", "poison", "bug", "flying", "dragon", "steel"],
@@ -88,7 +88,7 @@ const TypeData = [
   {
     id: 5,
     name: "ice",
-    imgSrc: "./Assets/iceType.png",
+    imgSrc: iceType,
 
     superEff: ["grass", "ground", "flying", "dragon"],
     notEff: ["fire", "water", "ice", "steel"],
@@ -101,7 +101,7 @@ const TypeData = [
   {
     id: 6,
     name: "fighting",
-    imgSrc: "./Assets/fightingType.png",
+    imgSrc: fightingType,
 
     superEff: ["ice", "steel", "dark", "normal", "rock"],
     notEff: ["flying", "poison", "psychic", "bug", "fairy"],
@@ -114,7 +114,7 @@ const TypeData = [
   {
     id: 7,
     name: "flying",
-    imgSrc: "./Assets/flyingType.png",
+    imgSrc: flyingType,
 
     superEff: ["fighting", "bug", "grass"],
     notEff: ["rock", "steel", "electric"],
@@ -127,7 +127,7 @@ const TypeData = [
   {
     id: 8,
     name: "poison",
-    imgSrc: "./Assets/poisonType.png",
+    imgSrc: poisonType,
 
     superEff: ["fairy", "grass"],
     notEff: ["poison", "ground", "rock", "ghost"],
@@ -140,7 +140,7 @@ const TypeData = [
   {
     id: 9,
     name: "ground",
-    imgSrc: "./Assets/groundType.png",
+    imgSrc: groundType,
 
     superEff: ["poison", "rock", "steel", "fire", "electric"],
     notEff: ["bug", "grass"],
@@ -153,7 +153,7 @@ const TypeData = [
   {
     id: 10,
     name: "rock",
-    imgSrc: "./Assets/rockType.png",
+    imgSrc: rockType,
 
     superEff: ["ice", "flying", "bug", "fire"],
     notEff: ["fighting", "ground", "steel"],
@@ -166,7 +166,7 @@ const TypeData = [
   {
     id: 11,
     name: "bug",
-    imgSrc: "./Assets/bugType.png",
+    imgSrc: bugType,
 
     superEff: ["psychic", "dark"],
     notEff: ["fighting", "ghost", "poison", "fling", "steel"],
@@ -179,7 +179,7 @@ const TypeData = [
   {
     id: 12,
     name: "ghost",
-    imgSrc: "./Assets/ghostType.png",
+    imgSrc: ghostType,
 
     superEff: ["psychic", "ghost"],
     notEff: ["dark"],
@@ -192,7 +192,7 @@ const TypeData = [
   {
     id: 13,
     name: "psychic",
-    imgSrc: "./Assets/psychicType.png",
+    imgSrc: psychicType,
 
     superEff: ["fighting", "poison"],
     notEff: ["psychic", "steel"],
@@ -205,7 +205,7 @@ const TypeData = [
   {
     id: 14,
     name: "dark",
-    imgSrc: "./Assets/darkType.png",
+    imgSrc: darkType,
 
     superEff: ["psychic", "ghost"],
     notEff: ["fighting", "dark", "fairy"],
@@ -218,7 +218,7 @@ const TypeData = [
   {
     id: 15,
     name: "fairy",
-    imgSrc: "./Assets/fairyType.png",
+    imgSrc: fairyType,
 
     superEff: ["fighting", "dragon", "dark"],
     notEff: ["poison", "steel", "fire"],
@@ -231,7 +231,7 @@ const TypeData = [
   {
     id: 16,
     name: "steel",
-    imgSrc: "./Assets/steelType.png",
+    imgSrc: steelType,
 
     superEff: ["rock", "ice", "fairy"],
     notEff: ["steel", "electric", "water", "fire"],
@@ -255,7 +255,7 @@ const TypeData = [
   {
     id: 17,
     name: "dragon",
-    imgSrc: "./Assets/dragonType.png",
+    imgSrc: dragonType,
 
     superEff: ["dragon"],
     notEff: ["steel"],

@@ -7,12 +7,181 @@ const TypeDataFunc = () => {
   const [resistSt, setResistSt] = useState([]);
   const [immuneSt, setImmuneSt] = useState([]);
   const [immuneSt2, setImmuneSt2] = useState([]);
+  const [currentTypeBtn, setCurrentTypeBtn] = useState("type1");
+  const [testImg, setTestImg] = useState([]);
+  let weakImgArr = [];
+  // TRY USE EFFECT
+  function setStats(type) {
+    setWeakSt(type.weak);
+
+    setResistSt(type.resist);
+    setImmuneSt(type.immune);
+    setCurrentTypeBtn("type2");
+    // weakImgRender();
+    // weakSt.forEach((e) => {
+    //   if (e === "fire") {
+    //     setTestImg(<img alt="test" src={TypeData[0].imgSrc} />);
+    //   }
+    // });
+    // setTestImg(<img alt="test" src={TypeData[0].imgSrc} />);
+  }
+  console.log(weakSt + "@@@");
+
+  const weakImgRender = () => {
+    // alert("hit");
+    // console.log(weakSt + "%%%");
+    // if (weakSt.includes("fire")) {
+    //   setTestImg(<img alt="test" src={TypeData[0].imgSrc} />);
+    // }
+    // if (weakSt.includes("normal")) {
+    //   weakImgArr.push(<img alt="test" src={TypeData[1].imgSrc} />);
+    // }
+    // if (weakSt.includes("water")) {
+    //   return <img alt="test" src={TypeData[2].imgSrc} />;
+    // }
+    // if (weakSt.includes("electric")) {
+    //   return <img alt="test" src={TypeData[3].imgSrc} />;
+    // }
+    // if (weakSt.includes("grass")) {
+    //   return <img alt="test" src={TypeData[4].imgSrc} />;
+    // }
+    // if (weakSt.includes("ice")) {
+    //   weakImgArr.push(<img alt="test" src={TypeData[5].imgSrc} />);
+    // }
+    // if (weakSt.includes("fighting")) {
+    //   return <img alt="test" src={TypeData[6].imgSrc} />;
+    // }
+    // if (weakSt.includes("flying")) {
+    //   return <img alt="test" src={TypeData[7].imgSrc} />;
+    // }
+    // if (weakSt.includes("poison")) {
+    //   return <img alt="test" src={TypeData[8].imgSrc} />;
+    // }
+    // if (weakSt.includes("ground")) {
+    //   return <img alt="test" src={TypeData[9].imgSrc} />;
+    // }
+    // if (weakSt.includes("rock")) {
+    //   return <img alt="test" src={TypeData[10].imgSrc} />;
+    // }
+    // if (weakSt.includes("bug")) {
+    //   return <img alt="test" src={TypeData[11].imgSrc} />;
+    // }
+    // if (weakSt.includes("ghost")) {
+    //   return <img alt="test" src={TypeData[12].imgSrc} />;
+    // }
+    // if (weakSt.includes("psychic")) {
+    //   return <img alt="test" src={TypeData[13].imgSrc} />;
+    // }
+    // if (weakSt.includes("dark")) {
+    //   return <img alt="test" src={TypeData[14].imgSrc} />;
+    // }
+    // if (weakSt.includes("fairy")) {
+    //   return <img alt="test" src={TypeData[15].imgSrc} />;
+    // }
+    // if (weakSt.includes("steel")) {
+    //   return <img alt="test" src={TypeData[16].imgSrc} />;
+    // }
+    // if (weakSt.includes("dragon")) {
+    //   return <img alt="test" src={TypeData[17].imgSrc} />;
+    // }
+    // // setTestImg(weakImgArr);
+    // console.log(weakImgArr);
+    // console.log(testImg + "####");
+  };
+
+  const btnRender = () => {
+    // setTestImg(() => {
+    //   if (weakSt.includes("fire")) {
+    //     setTestImg(<img alt="test" src={TypeData[0].imgSrc} />);
+    //   }
+    // });
+    // if (weakSt.includes("fire")) {
+    //   setTestImg(testImg.concat(<img alt="test" src={TypeData[0].imgSrc} />));
+    // }
+
+    if (currentTypeBtn === "type1") {
+      return renderTypeBtn1();
+    }
+    if (currentTypeBtn === "type2") {
+      return renderTypeBtn2();
+    }
+    if (currentTypeBtn === "clear") {
+      return clearTypeFunc();
+    }
+  };
+  const clearTypeFunc = () => {
+    // console.log(weakSt + "&&&&&&");
+
+    return (
+      <button
+        onClick={() => {
+          clearTypes();
+          setCurrentTypeBtn("type1");
+        }}
+      >
+        Clear
+      </button>
+    );
+  };
+  const renderTypeBtn1 = () => {
+    return (
+      <div id="type1Btn" key="type1Btn">
+        {TypeData.map((type) => (
+          <button
+            key={`typeBtn${type.id}`}
+            className={type.name}
+            src={type.imgSrc}
+            onClick={() => {
+              // setImageTest(type.imgSrc);
+
+              setStats(type);
+
+              // setWeakSt(type.weak);
+              // setResistSt(type.resist);
+              // setImmuneSt(type.immune);
+              // setCurrentTypeBtn("type2");
+            }}
+            style={{
+              border: "none",
+              background: "none",
+            }}
+          >
+            <img alt={`typeBtn${type.id}`} key={type.name} src={type.imgSrc} />
+          </button>
+        ))}
+      </div>
+    );
+  };
+
+  const renderTypeBtn2 = () => {
+    return (
+      <div id="type2Btn" key="type2Btn">
+        {TypeData.map((type) => (
+          <button
+            key={`typeBtn${type.id}`}
+            className={type.name}
+            src={type.imgSrc}
+            onClick={() => {
+              adjustWeak(type);
+              adjustRes(type);
+              // console.log(weakSt);
+              setImmuneSt2(type.immune);
+              setCurrentTypeBtn("clear");
+            }}
+            style={{
+              border: "none",
+              background: "none",
+            }}
+          >
+            <img alt={`typeBtn${type.id}`} key={type.name} src={type.imgSrc} />
+          </button>
+        ))}
+      </div>
+    );
+  };
   function removeDuplicates(data) {
     return data.filter((value, index) => data.indexOf(value) === index);
   }
-
-  const filterNonUnique = (arr) =>
-    arr.filter((i) => arr.indexOf(i) === arr.lastIndexOf(i));
 
   function adjustWeak(props) {
     let resistArr = resistSt.concat(props.resist);
@@ -25,8 +194,7 @@ const TypeDataFunc = () => {
     let newWeakArr = weakArr.concat(props.weak);
 
     newWeakArr = newWeakArr.filter((val) => !resistArr.includes(val));
-    console.log(removeDuplicates(newWeakArr));
-    // filterNonUnique(newWeakArr);
+
     setWeakSt(removeDuplicates(newWeakArr));
   }
   function adjustRes(props) {
@@ -36,96 +204,36 @@ const TypeDataFunc = () => {
     resistSt.map((e) => {
       return resistArr.push(e);
     });
+
     let newResistArr = resistArr.concat(props.resist);
 
     newResistArr = newResistArr.filter((val) => !weakArr.includes(val));
-    console.log(removeDuplicates(newResistArr));
-
-    // filterNonUnique(newResistArr);
 
     setResistSt(removeDuplicates(newResistArr));
   }
-  // function checkForDupes() {
-  //   let weakArr = weakSt;
-  //   let resistArr = resistSt;
 
-  //   removeDuplicates(weakArr);
-  //   filterNonUnique(resistArr);
-
-  //   setWeakSt(weakArr);
-  //   setResistSt(resistArr);
-  // }
   function clearTypes() {
-    setWeakSt(null);
-    setResistSt(null);
-    setImmuneSt(null);
-    setImmuneSt2(null);
+    setWeakSt([]);
+    setResistSt([]);
+    setImmuneSt([]);
+    setImmuneSt2([]);
   }
-  // function adjustImmune(props) {
-  //   let weakArr = [weakSt];
-  //   let resistArr = [resistSt];
-  //   let immuneArr = [props.immune];
-
-  //   weakArr = weakArr.filter((val) => !immuneArr.includes(val));
-  //   resistArr = resistArr.filter((val) => !immuneArr.includes(val));
-  //   console.log(`Imm ${immuneArr}`);
-
-  //   console.log(`Wmm ${weakArr}`);
-  //   console.log(`Rmm ${resistArr}`);
-
-  //   // setResistSt(resistArr);
-  //   // setWeakSt(weakArr);
-  //   setImmuneSt(immuneSt.concat(immuneArr));
-  // }
 
   return (
-    <div id="mainDiv">
+    <div id="mainDiv" key="maindiv">
       <p id="weaknessP">Weak: {weakSt.join(", ")}</p>
       <p id="resistP">Resist: {resistSt.join(", ")}</p>
-      <p id="immuneP">Immune: {immuneSt.join(", ")}</p>
-      <p>{immuneSt2}</p>
-      <div id="typeButtons">
-        <div id="type1">
-          {TypeData.map((type) => (
-            <div>
-              <button
-                key={type.id}
-                className={type.name}
-                src={type.imgSrc}
-                onClick={() => {
-                  // popStates(type);
-                  clearTypes();
-                  setWeakSt(type.weak);
-                  setResistSt(type.resist);
-                  setImmuneSt(type.immune);
-                }}
-              >
-                {type.name}
-              </button>
-            </div>
-          ))}
-        </div>
-        <div id="type2">
-          {TypeData.map((type) => (
-            <div>
-              <button
-                key={type.id}
-                className={type.name}
-                src={type.imgSrc}
-                onClick={() => {
-                  adjustWeak(type);
-                  adjustRes(type);
-                  setImmuneSt2(type.immune);
+      <p id="immuneP">
+        Immune: {immuneSt.join(", ")} {immuneSt2.join(", ")}
+      </p>
 
-                  // adjustImmune(type);
-                }}
-              >
-                {type.name}
-              </button>
-            </div>
-          ))}
-        </div>
+      <div id="typeButtons" key="maindiv">
+        {btnRender()}
       </div>
+      <div id="images" key="images">
+        {/* <img src={imageTest} alt="test" key="testimg1" /> */}
+      </div>
+      {testImg}
     </div>
   );
 };
