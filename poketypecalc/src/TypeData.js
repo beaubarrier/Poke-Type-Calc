@@ -121,7 +121,7 @@ const TypeData = [
     noFx: [],
 
     weak: ["rock", "electric", "ice"],
-    resist: ["fighting", "bug", "fairy"],
+    resist: ["fighting", "bug", "grass"],
     immune: ["ground"],
   },
   {
