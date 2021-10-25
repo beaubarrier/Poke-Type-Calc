@@ -3,10 +3,22 @@ import TypeData from "./TypeData.js";
 import "./TypeCalc.css";
 
 const TypeDataFunc = () => {
-  const [type1nameImg, setType1nameImg] = useState([]);
-  const [type2nameImg, setType2nameImg] = useState([]);
-  const [type1name, setType1name] = useState([]);
-  const [type2name, setType2name] = useState([]);
+  const [type1nameImg, setType1NameImg] = useState([]);
+  const [type2nameImg, setType2NameImg] = useState([]);
+  const [type1name, setType1Name] = useState([]);
+  const [type2name, setType2Name] = useState([]);
+  const [type1AtkSE, setType1AtkSE] = useState([]);
+  const [type1AtkNE, setType1AtkNE] = useState([]);
+  const [type1AtkNF, setType1AtkNF] = useState([]);
+  const [type1AtkImgSE, setType1AtkSEImg] = useState([]);
+  const [type1AtkImgNE, setType1AtkNEImg] = useState([]);
+  const [type1AtkImgNF, setType1AtkNFImg] = useState([]);
+  const [type2AtkSE, setType2AtkSE] = useState([]);
+  const [type2AtkNE, setType2AtkNE] = useState([]);
+  const [type2AtkNF, setType2AtkNF] = useState([]);
+  const [type2AtkImgSE, setType2AtkSEImg] = useState([]);
+  const [type2AtkImgNE, setType2AtkNEImg] = useState([]);
+  const [type2AtkImgNF, setType2AtkNFImg] = useState([]);
   const [weakSt, setWeakSt] = useState([]);
   const [weakStImg, setWeakStImg] = useState([]);
   const [resistSt, setResistSt] = useState([]);
@@ -37,8 +49,14 @@ const TypeDataFunc = () => {
             className={type.name}
             src={type.imgSrc}
             onClick={() => {
-              setStats(type);
-              setType1name(type.name);
+              setType1Name(type.name);
+              setType1AtkSE(type.superEff);
+              setType1AtkNE(type.notEff);
+              setType1AtkNF(type.noFx);
+              setWeakSt(type.weak);
+              setResistSt(type.resist);
+              setImmuneSt(type.immune);
+              setCurrentTypeBtn("type2");
             }}
             style={{
               border: "none",
@@ -60,10 +78,13 @@ const TypeDataFunc = () => {
             className={type.name}
             src={type.imgSrc}
             onClick={() => {
+              setType2Name(type.name);
+              setType2AtkSE(type.superEff);
+              setType2AtkNE(type.notEff);
+              setType2AtkNF(type.noFx);
               adjustWeak(type);
               adjustRes(type);
               adjustImmu(type);
-              setType2name(type.name);
               setCurrentTypeBtn("clear");
             }}
             style={{
@@ -126,7 +147,7 @@ const TypeDataFunc = () => {
     nameArr.forEach((e) => {
       if (type1name.includes(e.name)) {
         type1ImgArr.push(<img alt={e.name} key={e.name} src={e.imgSrc} />);
-        setType1nameImg(type1ImgArr);
+        setType1NameImg(type1ImgArr);
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -136,20 +157,74 @@ const TypeDataFunc = () => {
     nameArr.forEach((e) => {
       if (type2name.includes(e.name)) {
         type2ImgArr.push(<img alt={e.name} key={e.name} src={e.imgSrc} />);
-        setType2nameImg(type2ImgArr);
+        setType2NameImg(type2ImgArr);
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type2name]);
+  useEffect(() => {
+    let imgArr = [];
+    nameArr.forEach((e) => {
+      if (type1AtkSE.includes(e.name)) {
+        imgArr.push(<img alt={e.name} key={e.name} src={e.imgSrc} />);
+        setType1AtkSEImg(imgArr);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [type1AtkSE]);
+  useEffect(() => {
+    let imgArr = [];
+    nameArr.forEach((e) => {
+      if (type1AtkNE.includes(e.name)) {
+        imgArr.push(<img alt={e.name} key={e.name} src={e.imgSrc} />);
+        setType1AtkNEImg(imgArr);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [type1AtkNE]);
+  useEffect(() => {
+    let imgArr = [];
+    nameArr.forEach((e) => {
+      if (type1AtkNF.includes(e.name)) {
+        imgArr.push(<img alt={e.name} key={e.name} src={e.imgSrc} />);
+        setType1AtkNFImg(imgArr);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [type1AtkNF]);
+  useEffect(() => {
+    let imgArr = [];
+    nameArr.forEach((e) => {
+      if (type2AtkSE.includes(e.name)) {
+        imgArr.push(<img alt={e.name} key={e.name} src={e.imgSrc} />);
+        setType2AtkSEImg(imgArr);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [type2AtkSE]);
+  useEffect(() => {
+    let imgArr = [];
+    nameArr.forEach((e) => {
+      if (type2AtkNE.includes(e.name)) {
+        imgArr.push(<img alt={e.name} key={e.name} src={e.imgSrc} />);
+        setType2AtkNEImg(imgArr);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [type2AtkNE]);
+  useEffect(() => {
+    let imgArr = [];
+    nameArr.forEach((e) => {
+      if (type2AtkNF.includes(e.name)) {
+        imgArr.push(<img alt={e.name} key={e.name} src={e.imgSrc} />);
+        setType2AtkNFImg(imgArr);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [type2AtkNF]);
 
   function removeDuplicates(data) {
     return data.filter((value, index) => data.indexOf(value) === index);
-  }
-  function setStats(type) {
-    setWeakSt(type.weak);
-    setResistSt(type.resist);
-    setImmuneSt(type.immune);
-    setCurrentTypeBtn("type2");
   }
   function adjustWeak(props) {
     let resistArr = resistSt.concat(props.resist);
@@ -180,22 +255,40 @@ const TypeDataFunc = () => {
     setImmuneSt(removeDuplicates(immuArr));
   }
   function clearTypes() {
-    setType1name([]);
-    setType2name([]);
-    setType1nameImg([]);
-    setType2nameImg([]);
+    setType1Name([]);
+    setType2Name([]);
+    setType1NameImg([]);
+    setType2NameImg([]);
     setWeakSt([]);
     setResistSt([]);
     setImmuneSt([]);
     setWeakStImg([]);
     setResistStImg([]);
     setImmuneStImg([]);
+    setType1AtkSE([]);
+    setType1AtkSEImg([]);
+    setType1AtkNE([]);
+    setType1AtkNEImg([]);
+    setType1AtkNF([]);
+    setType1AtkNFImg([]);
+    setType2AtkSE([]);
+    setType2AtkSEImg([]);
+    setType2AtkNE([]);
+    setType2AtkNEImg([]);
+    setType2AtkNF([]);
+    setType2AtkNFImg([]);
   }
 
   return (
     <div id="mainDiv" key="maindiv">
       <p>Type 1: {type1nameImg}</p>
       <p>Type 2: {type2nameImg}</p>
+      <p>Type 1 Super Effective: {type1AtkImgSE}</p>
+      <p>Type 1 Not Very Effective: {type1AtkImgNE}</p>
+      <p>Type 1 No Effect: {type1AtkImgNF}</p>
+      <p>Type 2 Super Effective: {type2AtkImgSE}</p>
+      <p>Type 2 Not Very Effective: {type2AtkImgNE}</p>
+      <p>Type 2 No Effect: {type2AtkImgNF}</p>
       <p id="weaknessP">Weak: {weakStImg}</p>
       <p id="resistP">Resist: {resistStImg}</p>
       <p id="immuneP">Immune: {immuneStImg}</p>
