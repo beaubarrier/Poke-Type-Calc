@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TypeData from "./TypeData.js";
 import "./TypeCalc.css";
+import "nes.css/css/nes.min.css";
 
 const TypeDataFunc = () => {
   const [type1nameImg, setType1NameImg] = useState([]);
@@ -224,19 +225,17 @@ const TypeDataFunc = () => {
   }, [type2AtkNF]);
 
   function removeDuplicates(data) {
-    return data.filter((value, index) => data.indexOf(value) === index);
+    return data.filter((val, i) => data.indexOf(val) === i);
   }
   function adjustWeak(props) {
     let resistArr = resistSt.concat(props.resist);
-    let immune = props.immune;
+    let immuneArr = immuneSt.concat(props.immune);
     let weakArr = [];
-    let immuneArr = immuneSt;
     weakSt.map((e) => {
       return weakArr.push(e);
     });
     let newWeakArr = weakArr.concat(props.weak);
     newWeakArr = newWeakArr.filter((val) => !resistArr.includes(val));
-    newWeakArr = newWeakArr.filter((val) => !immune.includes(val));
     newWeakArr = newWeakArr.filter((val) => !immuneArr.includes(val));
     setWeakSt(removeDuplicates(newWeakArr));
   }
@@ -280,8 +279,8 @@ const TypeDataFunc = () => {
   }
 
   return (
-    <div id="mainDiv" key="maindiv">
-      <p>Type 1: {type1nameImg}</p>
+    <div id="mainContainer" key="maindiv">
+      {/* <p>Type 1: {type1nameImg}</p>
       <p>Type 2: {type2nameImg}</p>
       <p>Type 1 Super Effective: {type1AtkImgSE}</p>
       <p>Type 1 Not Very Effective: {type1AtkImgNE}</p>
@@ -294,6 +293,104 @@ const TypeDataFunc = () => {
       <p id="immuneP">Immune: {immuneStImg}</p>
       <div id="typeButtons" key="maindiv">
         {btnRender()}
+      </div> */}
+
+      <div id="mainGridContainer">
+        <div id="type1Container" className="nes-container with-title">
+          <p className="title">{type1nameImg}</p>
+
+          <div></div>
+          <div class="nes-table-responsive">
+            <table class="nes-table is-bordered is-centered">
+              <thead>
+                <tr></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Super<br></br>Effective
+                  </td>
+                  <td className="superEffective">{type1AtkImgSE}</td>
+                </tr>
+                <tr>
+                  <td>
+                    Not Very<br></br>Effective
+                  </td>
+                  <td className="notVeryEffective">{type1AtkImgNE}</td>
+                </tr>
+                <tr>
+                  <td>No Effect</td>
+                  <td>{type1AtkImgNF}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="type2Container" className="nes-container with-title">
+          <p className="title">{type2nameImg}</p>
+          <div class="nes-table-responsive">
+            <table class="nes-table is-bordered is-centered">
+              <thead>
+                <tr></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Super<br></br>Effective
+                  </td>
+                  <td className="superEffective">{type2AtkImgSE}</td>
+                </tr>
+                <tr>
+                  <td>
+                    Not Very<br></br>Effective
+                  </td>
+                  <td className="notVeryEffective">{type2AtkImgNE}</td>
+                </tr>
+                <tr>
+                  <td>No Effect</td>
+                  <td>{type2AtkImgNF}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="defContainer" className="nes-container with-title">
+          <p className="title">Defenses</p>
+          <div class="nes-table-responsive">
+            <table class="nes-table is-bordered is-centered">
+              <thead>
+                <tr></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Weak</td>
+                  <td className="superEffective" has-title>
+                    {weakStImg}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Resist</td>
+                  <td className="notVeryEffective">{resistStImg}</td>
+                </tr>
+                <tr>
+                  <td>Immune</td>
+                  <td>{immuneStImg}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="resetBtnContainer" className="nes-container with-title">
+          <p className="title"></p>
+          {btnRender()}
+        </div>
+
+        {/* <div id="btnContainer" className="nes-container with-title">
+         
+        </div> */}
       </div>
     </div>
   );
